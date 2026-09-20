@@ -6,12 +6,25 @@ import { site, aboutHighlights } from "../data/site";
   <div class="container why-grid">
     <div class="why-visual">
       <img
-        src="/images/hero-kitchen.jpg"
-        alt="Bright, freshly cleaned home interior"
-        width="800"
+        src={site.images.about}
+        alt="Bright white kitchen after a professional clean"
+        width="900"
         height="720"
         loading="lazy"
       />
+      <div class="float-card">
+        <img
+          src={site.images.portrait}
+          alt={site.owner}
+          width="72"
+          height="72"
+          loading="lazy"
+        />
+        <div>
+          <strong>{site.owner}</strong>
+          <span>Owner &amp; Lead Cleaner</span>
+        </div>
+      </div>
     </div>
     <div class="why-copy">
       <p class="eyebrow">About Us</p>
@@ -20,30 +33,21 @@ import { site, aboutHighlights } from "../data/site";
       </h2>
       <p class="lead">
         Enjoy more time, less worry, and a beautifully maintained home with
-        {site.name}.
+        {site.name}. We bring care, consistency, and a polished finish to every visit.
       </p>
       <ul class="highlights">
         {
           aboutHighlights.map((item) => (
             <li>
-              <span class="chev" aria-hidden="true">»</span>
+              <span class="check" aria-hidden="true">✓</span>
               {item}
             </li>
           ))
         }
       </ul>
-      <div class="owner">
-        <img
-          src="/images/rachel-avatar.jpg"
-          alt={site.owner}
-          width="64"
-          height="64"
-          loading="lazy"
-        />
-        <div>
-          <strong>{site.owner}</strong>
-          <a href={site.phoneHref}>{site.phone}</a>
-        </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/#contact">{site.cta.primary}</a>
+        <a class="btn btn-outline" href={site.phoneHref}>{site.phone}</a>
       </div>
     </div>
   </div>
@@ -52,77 +56,102 @@ import { site, aboutHighlights } from "../data/site";
 <style>
   .why-grid {
     display: grid;
-    gap: 2rem;
+    gap: 2.25rem;
   }
 
   .why-visual {
-    border-radius: 20px;
+    position: relative;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    aspect-ratio: 5 / 4;
   }
 
-  .why-visual img {
+  .why-visual > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    min-height: 280px;
   }
 
-  .highlights {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0 2rem;
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .highlights li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.55rem;
-    font-weight: 600;
-  }
-
-  .chev {
-    color: var(--pink-hot);
-    font-weight: 700;
-  }
-
-  .owner {
+  .float-card {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    right: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
   }
 
-  .owner img {
-    width: 64px;
-    height: 64px;
+  .float-card img {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--pink-soft);
   }
 
-  .owner strong {
+  .float-card strong {
     display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
   }
 
-  .owner a {
+  .float-card span {
     color: var(--muted);
-    font-weight: 500;
+    font-size: 0.86rem;
   }
 
-  .owner a:hover {
-    color: var(--pink-hot);
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin: 1.6rem 0 2rem;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-weight: 650;
+    font-size: 1.02rem;
+  }
+
+  .check {
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 50%;
+    background: var(--pink-soft);
+    color: var(--pink-deep);
+    display: grid;
+    place-items: center;
+    font-size: 0.78rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   @media (min-width: 900px) {
     .why-grid {
       grid-template-columns: 0.95fr 1.05fr;
-      gap: 3.5rem;
+      gap: 3.75rem;
       align-items: center;
+    }
+
+    .float-card {
+      right: auto;
+      min-width: 240px;
     }
   }
 </style>

@@ -2,7 +2,7 @@
 import { testimonials } from "../data/site";
 ---
 
-<section class="section" id="testimonials" aria-labelledby="testimonials-heading">
+<section class="section section-soft" id="testimonials" aria-labelledby="testimonials-heading">
   <div class="container">
     <div class="intro">
       <p class="eyebrow">Happy Homeowners</p>
@@ -30,24 +30,24 @@ import { testimonials } from "../data/site";
 
 <style>
   .intro {
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
   }
 
   .grid {
     display: grid;
-    gap: 1rem;
+    gap: 1.1rem;
   }
 
   .card {
     position: relative;
-    border-radius: 16px;
-    padding: 1.5rem 1.35rem 1.35rem;
+    border-radius: 20px;
+    padding: 1.65rem 1.45rem 1.45rem;
     box-shadow: var(--shadow);
     min-height: 100%;
   }
 
   .card-pink {
-    background: var(--pink-hot);
+    background: linear-gradient(155deg, var(--pink-hot), var(--pink-deep));
     color: white;
   }
 
@@ -58,45 +58,45 @@ import { testimonials } from "../data/site";
 
   .quote-mark {
     position: absolute;
-    top: 0.55rem;
-    right: 1rem;
-    font-size: 3rem;
+    top: 0.45rem;
+    right: 1.1rem;
+    font-size: 3.2rem;
     line-height: 1;
-    color: var(--navy-deep);
-    opacity: 0.85;
-    font-family: Georgia, serif;
+    color: rgba(26, 21, 35, 0.18);
+    font-family: var(--font-display);
   }
 
   .card-pink .quote-mark {
-    color: rgba(3, 24, 136, 0.55);
+    color: rgba(255, 255, 255, 0.28);
   }
 
   .stars {
     color: #f5c518;
     letter-spacing: 0.08em;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.75rem;
     font-size: 0.95rem;
   }
 
   p {
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.35rem;
     font-size: 0.98rem;
+    line-height: 1.6;
   }
 
   .person {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.7rem;
   }
 
   .avatar {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.22);
   }
 
   .card-white .avatar {

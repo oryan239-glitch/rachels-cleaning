@@ -2,19 +2,19 @@
 import { faqs } from "../data/site";
 ---
 
-<section class="section section-soft" id="faq" aria-labelledby="faq-heading">
+<section class="section" id="faq" aria-labelledby="faq-heading">
   <div class="container faq-grid">
     <div class="faq-intro">
       <p class="eyebrow">Some Questions <span class="amp">&</span> Answers</p>
       <h2 id="faq-heading" class="section-title">
-        Frequently Q<span class="accent">.</span> <span class="accent">&</span> A<span class="accent">.</span>
+        Frequently Asked <span class="accent">Questions</span>
       </h2>
       <p class="lead">
         Quick answers to the questions we hear most. Need something specific?
         Reach out—we're happy to help.
       </p>
       <div class="faq-ctas">
-        <a class="btn btn-primary" href="/#services">Learn More</a>
+        <a class="btn btn-primary" href="/#services">View Services</a>
         <a class="btn btn-outline" href="/#contact">Get a Quote!</a>
       </div>
     </div>
@@ -50,11 +50,20 @@ import { faqs } from "../data/site";
 
   .faq-list {
     display: grid;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 0.35rem 1.25rem;
+    box-shadow: var(--shadow);
   }
 
   .faq-item {
-    border-bottom: 1px solid #d1d5db;
-    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0.2rem 0;
+  }
+
+  .faq-item:last-child {
+    border-bottom: 0;
   }
 
   summary {
@@ -63,8 +72,8 @@ import { faqs } from "../data/site";
     display: flex;
     gap: 0.85rem;
     align-items: flex-start;
-    padding: 1.05rem 0;
-    font-weight: 650;
+    padding: 1.15rem 0;
+    font-weight: 700;
     font-size: 1.02rem;
   }
 
@@ -75,7 +84,7 @@ import { faqs } from "../data/site";
   .marker {
     width: 1.1rem;
     flex-shrink: 0;
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
     position: relative;
   }
 
@@ -83,7 +92,7 @@ import { faqs } from "../data/site";
   .marker::after {
     content: "";
     position: absolute;
-    background: var(--ink);
+    background: var(--pink-deep);
     border-radius: 2px;
   }
 
@@ -108,7 +117,7 @@ import { faqs } from "../data/site";
   }
 
   .faq-item p {
-    margin: 0 0 1.1rem 1.95rem;
+    margin: 0 0 1.15rem 1.95rem;
     color: var(--muted);
     max-width: 38rem;
   }

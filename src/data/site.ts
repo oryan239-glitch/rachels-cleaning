@@ -1,6 +1,7 @@
 /**
  * Single source of truth for Rachel's Cleaning Services.
- * Edit this file to update name, phone, email, address, and CTAs across the site.
+ * Edit this file to update name, phone, email, address, CTAs, and content.
+ * Cleaning-only branding — no Home Watch.
  */
 export const site = {
   name: "Rachel's Cleaning Services",
@@ -33,16 +34,20 @@ export const site = {
     { label: "About Us", href: "/#about" },
     { label: "Contact Us", href: "/#contact" },
   ],
-  social: {
-    // PLACEHOLDER: update when real profile URLs are confirmed
-    facebook: "https://www.facebook.com/",
-    tiktok: "https://www.tiktok.com/",
-    youtube: "https://www.youtube.com/",
-  },
   mapEmbedUrl:
     "https://www.openstreetmap.org/export/embed.html?bbox=-81.85%2C26.42%2C-81.75%2C26.52&layer=mapnik&marker=26.47%2C-81.80",
   mapLink:
     "https://www.openstreetmap.org/?mlat=26.47&mlon=-81.80#map=13/26.47/-81.80",
+  images: {
+    hero: "/images/kitchen-dark-cabinets.jpg",
+    og: "/images/kitchen-dark-cabinets.jpg",
+    about: "/images/kitchen-white-peonies.jpg",
+    portrait: "/images/rachel-portrait.jpg",
+    feature: "/images/living-dining-open.jpg",
+    featureAlt: "/images/living-room-modern.jpg",
+    exterior: "/images/home-exterior-dusk.jpg",
+    texture: "/images/texture-soft-light.jpg",
+  },
 } as const;
 
 export const services = [
@@ -51,6 +56,7 @@ export const services = [
     title: "Deep Cleaning",
     description:
       "A detailed top-to-bottom clean for a truly spotless home—ideal when you want every surface refreshed.",
+    image: "/images/kitchen-cabinets-open.jpg",
     accent: "pink" as const,
   },
   {
@@ -58,6 +64,7 @@ export const services = [
     title: "Rental Move-Out Cleaning",
     description:
       "Thorough cleaning for rental properties so homes are ready for new tenants and inspections.",
+    image: "/images/floors-polished.jpg",
     accent: "white" as const,
   },
   {
@@ -65,6 +72,7 @@ export const services = [
     title: "New Construction Cleaning",
     description:
       "Post-construction cleanup that clears dust and debris so new spaces are move-in ready.",
+    image: "/images/before-after-hallway.jpg",
     accent: "pink" as const,
   },
   {
@@ -72,6 +80,7 @@ export const services = [
     title: "Eviction Cleanouts",
     description:
       "Fast, efficient cleanouts for vacated properties so you can turn units around quickly.",
+    image: "/images/detail-ceiling-fan-dust.jpg",
     accent: "white" as const,
   },
   {
@@ -79,6 +88,7 @@ export const services = [
     title: "Airbnb Cleaning",
     description:
       "Reliable turnover cleaning for vacation rentals—guest-ready between every stay.",
+    image: "/images/bedroom-beach-turnover.jpg",
     accent: "pink" as const,
   },
   {
@@ -86,6 +96,7 @@ export const services = [
     title: "Airbnb Management Support",
     description:
       "Cleaning-focused support that keeps listings looking sharp with less day-to-day stress.",
+    image: "/images/bedroom-made.jpg",
     accent: "white" as const,
   },
   {
@@ -93,6 +104,7 @@ export const services = [
     title: "Ozone Cleaning",
     description:
       "Advanced ozone treatment to neutralize odors and help purify indoor spaces.",
+    image: "/images/bathroom-modern.jpg",
     accent: "pink" as const,
   },
   {
@@ -100,6 +112,7 @@ export const services = [
     title: "Office Cleaning",
     description:
       "Professional commercial cleaning that keeps workspaces fresh, tidy, and welcoming.",
+    image: "/images/living-room-corner.jpg",
     accent: "white" as const,
   },
 ] as const;
@@ -109,6 +122,32 @@ export const aboutHighlights = [
   "Trained & Trusted Professionals",
   "Reliable Local Southwest Florida Team",
   "Eco-Conscious Products Available",
+] as const;
+
+export const stats = [
+  { value: "500+", label: "Homes Cleaned" },
+  { value: "8+", label: "Service Types" },
+  { value: "5★", label: "Client Reviews" },
+  { value: "SWFL", label: "Local & Trusted" },
+] as const;
+
+export const gallery = [
+  {
+    src: "/images/lanai-patio.jpg",
+    alt: "Screened lanai ready for guests",
+  },
+  {
+    src: "/images/dining-water-view.jpg",
+    alt: "Dining room with water view",
+  },
+  {
+    src: "/images/bathroom-modern.jpg",
+    alt: "Freshly staged modern bathroom",
+  },
+  {
+    src: "/images/home-exterior-front.jpg",
+    alt: "Southwest Florida home exterior",
+  },
 ] as const;
 
 export const faqs = [

@@ -17,13 +17,14 @@ const {
 } = Astro.props;
 
 const canonical = new URL(path, site.url).toString();
-const ogImage = new URL("/images/hero-kitchen.jpg", site.url).toString();
+const ogImage = new URL(site.images.og, site.url).toString();
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "HomeAndConstructionBusiness",
   "@id": `${site.url}/#business`,
   name: site.legalName,
+  alternateName: site.name,
   image: ogImage,
   url: site.url,
   telephone: site.phone,
@@ -37,22 +38,11 @@ const jsonLd = {
     addressCountry: site.address.country,
     streetAddress: site.address.line1,
   },
-  areaServed: [
-    "Fort Myers, FL",
-    "San Carlos Park, FL",
-    "Southwest Florida",
-  ],
+  areaServed: ["Fort Myers, FL", "San Carlos Park, FL", "Southwest Florida"],
   priceRange: "$$",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ],
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     opens: "08:00",
     closes: "18:00",
   },
@@ -67,6 +57,10 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.owner} />
+    <meta
+      name="keywords"
+      content="house cleaning Fort Myers, maid service San Carlos Park, Airbnb cleaning SWFL, deep cleaning Fort Myers, move-out cleaning"
+    />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -86,7 +80,7 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 

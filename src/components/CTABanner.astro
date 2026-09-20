@@ -3,6 +3,9 @@ import { site } from "../data/site";
 ---
 
 <section class="cta" aria-labelledby="cta-heading">
+  <div class="cta-bg" aria-hidden="true">
+    <img src={site.images.exterior} alt="" width="1600" height="900" loading="lazy" />
+  </div>
   <div class="container cta-inner">
     <div>
       <h2 id="cta-heading">Let Rachel's Cleaning Take Care of Your Home</h2>
@@ -20,20 +23,46 @@ import { site } from "../data/site";
 
 <style>
   .cta {
-    background: linear-gradient(120deg, var(--pink-deep), var(--pink-hot) 55%, #fb7185);
+    position: relative;
     color: white;
-    padding: 3.25rem 0;
+    padding: 4rem 0;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(194, 24, 91, 0.92),
+      rgba(243, 80, 137, 0.88) 55%,
+      rgba(26, 21, 35, 0.72)
+    );
   }
 
   .cta-inner {
+    position: relative;
+    z-index: 1;
     display: grid;
     gap: 1.5rem;
     align-items: center;
   }
 
   h2 {
-    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+    margin-bottom: 0.55rem;
   }
 
   p {
@@ -50,7 +79,7 @@ import { site } from "../data/site";
 
   @media (min-width: 860px) {
     .cta-inner {
-      grid-template-columns: 1.4fr auto;
+      grid-template-columns: 1.45fr auto;
     }
   }
 </style>

@@ -1,25 +1,26 @@
 :root {
-  --pink: #ec4899;
+  --pink: #e83e8c;
   --pink-hot: #f35089;
-  --pink-bright: #f94c8b;
-  --pink-deep: #db2777;
-  --pink-soft: #fce7f3;
-  --pink-blush: #fcedea;
-  --navy: #1e3a8a;
-  --navy-deep: #031888;
-  --ink: #111827;
-  --muted: #4b5563;
-  --line: #e5e7eb;
+  --pink-bright: #ff5a9a;
+  --pink-deep: #c2185b;
+  --pink-soft: #fce4ef;
+  --pink-blush: #fdf2f7;
+  --ink: #1a1523;
+  --ink-soft: #2a2430;
+  --muted: #5c5666;
+  --line: #ebe6ea;
   --bg: #ffffff;
-  --bg-soft: #f7f7f8;
+  --bg-soft: #f8f6f7;
   --bg-warm: #faf7f8;
   --white: #ffffff;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 18px 50px rgba(15, 23, 42, 0.1);
-  --radius: 14px;
+  --shadow: 0 8px 28px rgba(26, 21, 35, 0.06);
+  --shadow-lg: 0 22px 55px rgba(26, 21, 35, 0.12);
+  --radius: 18px;
+  --radius-sm: 12px;
   --radius-pill: 999px;
-  --container: 1120px;
-  --font: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --container: 1140px;
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
 *,
@@ -37,7 +38,7 @@ body {
   font-family: var(--font);
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -64,9 +65,11 @@ h1,
 h2,
 h3,
 h4 {
-  line-height: 1.15;
+  font-family: var(--font-display);
+  line-height: 1.12;
   letter-spacing: -0.02em;
-  margin: 0 0 0.6em;
+  margin: 0 0 0.55em;
+  font-weight: 600;
 }
 
 p {
@@ -94,7 +97,7 @@ p {
   position: absolute;
   left: 1rem;
   top: -100px;
-  background: var(--pink);
+  background: var(--pink-deep);
   color: white;
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -110,18 +113,19 @@ p {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.5rem;
+  padding: 0.9rem 1.55rem;
   border-radius: var(--radius-pill);
-  font-weight: 600;
+  font-weight: 650;
+  font-size: 0.95rem;
   border: 2px solid transparent;
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease,
+    box-shadow 0.18s ease, border-color 0.18s ease;
   cursor: pointer;
   text-align: center;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn:focus-visible {
@@ -130,28 +134,34 @@ p {
 }
 
 .btn-primary {
-  background: var(--pink-hot);
+  background: linear-gradient(135deg, var(--pink-hot), var(--pink-deep));
   color: white;
-  box-shadow: 0 8px 20px rgba(243, 80, 137, 0.28);
+  box-shadow: 0 10px 24px rgba(194, 24, 91, 0.28);
 }
 
 .btn-primary:hover {
-  background: var(--pink-deep);
+  background: linear-gradient(135deg, var(--pink-bright), var(--pink-deep));
 }
 
 .btn-outline {
   background: white;
-  color: var(--pink-hot);
-  border-color: var(--pink-hot);
+  color: var(--pink-deep);
+  border-color: color-mix(in srgb, var(--pink-hot) 55%, white);
 }
 
 .btn-outline:hover {
   background: var(--pink-soft);
+  border-color: var(--pink-hot);
 }
 
 .btn-white {
   background: white;
-  color: var(--pink-hot);
+  color: var(--pink-deep);
+  box-shadow: 0 8px 20px rgba(26, 21, 35, 0.1);
+}
+
+.btn-white:hover {
+  background: var(--pink-soft);
 }
 
 .btn-ghost {
@@ -160,8 +170,12 @@ p {
   border-color: rgba(255, 255, 255, 0.55);
 }
 
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .section {
-  padding: 4.5rem 0;
+  padding: 4.75rem 0;
 }
 
 .section-soft {
@@ -175,11 +189,11 @@ p {
 .eyebrow {
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--pink-deep);
+  margin-bottom: 0.85rem;
 }
 
 .eyebrow .amp {
@@ -187,22 +201,24 @@ p {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.6rem);
-  font-weight: 700;
+  font-size: clamp(1.9rem, 4.2vw, 2.85rem);
+  font-weight: 650;
 }
 
 .section-title .accent {
   color: var(--pink-hot);
+  font-style: italic;
 }
 
 .lead {
   font-size: 1.05rem;
   color: var(--muted);
   max-width: 38rem;
+  line-height: 1.7;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
   }
 }

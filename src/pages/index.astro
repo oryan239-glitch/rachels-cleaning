@@ -3,9 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
 import Services from "../components/Services.astro";
+import FeatureStats from "../components/FeatureStats.astro";
 import FAQ from "../components/FAQ.astro";
-import CTABanner from "../components/CTABanner.astro";
 import Testimonials from "../components/Testimonials.astro";
+import CTABanner from "../components/CTABanner.astro";
 import Contact from "../components/Contact.astro";
 import { site } from "../data/site";
 ---
@@ -17,8 +18,9 @@ import { site } from "../data/site";
   <Hero />
   <WhyChooseUs />
   <Services />
+  <FeatureStats />
   <FAQ />
-  <CTABanner />
   <Testimonials />
+  <CTABanner />
   <Contact />
 </BaseLayout>

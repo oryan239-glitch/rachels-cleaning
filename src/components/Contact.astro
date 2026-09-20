@@ -1,0 +1,189 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="section section-soft" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow">Contact Us</p>
+      <h2 id="contact-heading" class="section-title">
+        Get In <span class="accent">Touch</span> With Us
+      </h2>
+      <p class="lead">
+        Have questions or need help with your house cleaning needs?
+        <strong>{site.legalName}</strong> is ready to provide the information
+        and support you need.
+      </p>
+
+      <ul class="contact-list">
+        <li>
+          <span class="icon" aria-hidden="true">✉</span>
+          <div>
+            <span class="label">Email</span>
+            <a href={site.emailHref}>{site.email}</a>
+          </div>
+        </li>
+        <li>
+          <span class="icon" aria-hidden="true">☎</span>
+          <div>
+            <span class="label">Phone</span>
+            <a href={site.phoneHref}>{site.phone}</a>
+          </div>
+        </li>
+        <li>
+          <span class="icon" aria-hidden="true">📍</span>
+          <div>
+            <span class="label">Service Area</span>
+            <span>{site.address.full}</span>
+          </div>
+        </li>
+      </ul>
+
+      <form class="quote-form" action={`mailto:${site.email}`} method="get" enctype="text/plain">
+        <h3>Request A Quote</h3>
+        <label>
+          <span class="sr-only">Name</span>
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+        <label>
+          <span class="sr-only">Phone</span>
+          <input type="tel" name="phone" placeholder="Phone number" required />
+        </label>
+        <label>
+          <span class="sr-only">Email</span>
+          <input type="email" name="email" placeholder="Email address" required />
+        </label>
+        <label>
+          <span class="sr-only">Message</span>
+          <textarea name="body" rows="4" placeholder="Tell us about your home and the service you need" required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">{site.cta.primary}</button>
+      </form>
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        title="Map of San Carlos Park / Fort Myers service area"
+        src={site.mapEmbedUrl}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <a class="map-link" href={site.mapLink} target="_blank" rel="noopener noreferrer">
+        Open map
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 2rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact-list li {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+  }
+
+  .icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--pink-soft);
+    color: var(--pink-deep);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .contact-list a,
+  .contact-list span:last-child {
+    color: var(--pink-hot);
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  .quote-form {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 1.35rem;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .quote-form h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 0.85rem 0.95rem;
+    background: #fafafa;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 3px solid color-mix(in srgb, var(--pink) 35%, white);
+    border-color: var(--pink-hot);
+    background: white;
+  }
+
+  .map-wrap {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: white;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  iframe {
+    border: 0;
+    width: 100%;
+    flex: 1;
+    min-height: 360px;
+  }
+
+  .map-link {
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    font-weight: 600;
+    color: var(--pink-hot);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 960px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+  }
+</style>

@@ -1,0 +1,168 @@
+---
+import { site, services } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="brand-col">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <span>
+          <span class="brand-script">Rachel's</span>
+          <span class="brand-sub">Cleaning Services</span>
+        </span>
+      </a>
+      <p>
+        Professional residential and specialty cleaning for Fort Myers, San
+        Carlos Park, and nearby Southwest Florida communities.
+      </p>
+      <a class="phone" href={site.phoneHref}>{site.phone}</a>
+    </div>
+
+    <div>
+      <h3>Services</h3>
+      <ul>
+        {
+          services.slice(0, 5).map((s) => (
+            <li>
+              <a href="/#services">{s.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3>About Us</h3>
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <ul class="contact">
+        <li><a href={site.emailHref}>{site.email}</a></li>
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li>{site.address.full}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container legal">
+    <p>© {year} {site.legalName}. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    padding: 3.5rem 0 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, var(--pink-hot), var(--pink-deep));
+    color: white;
+    display: grid;
+    place-items: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .brand-script {
+    display: block;
+    color: var(--pink-hot);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .brand-sub {
+    display: block;
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .brand-col p {
+    color: var(--muted);
+    max-width: 22rem;
+  }
+
+  .phone {
+    color: var(--pink-hot);
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.85rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  a:hover {
+    color: var(--pink-hot);
+  }
+
+  .contact li,
+  .contact a {
+    color: var(--muted);
+    word-break: break-word;
+  }
+
+  .legal {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .legal p {
+    margin: 0;
+  }
+
+  @media (min-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+    }
+  }
+</style>

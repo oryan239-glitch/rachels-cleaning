@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+import Services from "../components/Services.astro";
+import FAQ from "../components/FAQ.astro";
+import CTABanner from "../components/CTABanner.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title={`${site.name} | Fort Myers & San Carlos Park, FL`}
+  description={`Expert home cleaning in Fort Myers & San Carlos Park, FL. Deep clean, Airbnb, move-out & more. Call ${site.phone}!`}
+>
+  <Hero />
+  <WhyChooseUs />
+  <Services />
+  <FAQ />
+  <CTABanner />
+  <Testimonials />
+  <Contact />
+</BaseLayout>

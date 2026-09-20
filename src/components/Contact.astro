@@ -15,6 +15,19 @@ import { site } from "../data/site";
         and support you need.
       </p>
 
+      <div class="quote-cta" aria-labelledby="quote-cta-heading">
+        <div>
+          <h3 id="quote-cta-heading">Ready for a fresher space?</h3>
+          <p>
+            Request a quote or call us today—we serve {site.serviceArea}.
+          </p>
+        </div>
+        <div class="quote-cta-actions">
+          <a class="btn btn-primary" href="#quote-form">{site.cta.primary}</a>
+          <a class="btn btn-outline" href={site.phoneHref}>{site.phone}</a>
+        </div>
+      </div>
+
       <ul class="contact-list">
         <li>
           <span class="icon" aria-hidden="true">✉</span>
@@ -39,7 +52,13 @@ import { site } from "../data/site";
         </li>
       </ul>
 
-      <form class="quote-form" action={`mailto:${site.email}`} method="get" enctype="text/plain">
+      <form
+        class="quote-form"
+        id="quote-form"
+        action={`mailto:${site.email}`}
+        method="get"
+        enctype="text/plain"
+      >
         <h3>Request A Quote</h3>
         <label>
           <span class="sr-only">Name</span>
@@ -92,6 +111,39 @@ import { site } from "../data/site";
     gap: 2.5rem;
   }
 
+  .quote-cta {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    margin: 1.5rem 0 0;
+    padding: 1.15rem 1.25rem;
+    border-radius: 16px;
+    background: linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--pink) 14%, white),
+      color-mix(in srgb, var(--pink-hot) 10%, white)
+    );
+    border: 1px solid color-mix(in srgb, var(--pink) 28%, white);
+  }
+
+  .quote-cta h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+    color: var(--pink-deep);
+  }
+
+  .quote-cta p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+
+  .quote-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
   .contact-list {
     list-style: none;
     padding: 0;
@@ -141,6 +193,7 @@ import { site } from "../data/site";
     box-shadow: var(--shadow);
     display: grid;
     gap: 0.8rem;
+    scroll-margin-top: 5.5rem;
   }
 
   .quote-form h3 {
@@ -207,6 +260,13 @@ import { site } from "../data/site";
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media (min-width: 640px) {
+    .quote-cta {
+      grid-template-columns: 1fr auto;
+      gap: 1.25rem;
+    }
   }
 
   @media (min-width: 960px) {

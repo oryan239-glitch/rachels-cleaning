@@ -3,7 +3,9 @@
  * Edit this file to update name, phone, email, address, CTAs, and content.
  * Cleaning-only branding — no Home Watch.
  */
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 export const site = {
   name: "Rachel's Cleaning Services",

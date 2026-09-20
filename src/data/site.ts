@@ -25,7 +25,6 @@ export const site = {
   url: "https://rachelscleaning.net",
   cta: {
     primary: "Request A Quote",
-    secondary: "Get a Quote!",
     call: "Call Now",
   },
   nav: [

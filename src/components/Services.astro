@@ -1,5 +1,5 @@
 ---
-import { site, services } from "../data/site";
+import { services } from "../data/site";
 ---
 
 <section class="section section-blush" id="services" aria-labelledby="services-heading">
@@ -30,12 +30,6 @@ import { site, services } from "../data/site";
             </div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <a
-              class:list={["btn", service.accent === "pink" ? "btn-white" : "btn-primary"]}
-              href="/#contact"
-            >
-              {site.cta.secondary}
-            </a>
           </article>
         ))
       }
@@ -111,7 +105,7 @@ import { site, services } from "../data/site";
 
   p {
     font-size: 0.94rem;
-    margin-bottom: 1.3rem;
+    margin-bottom: 0;
     flex: 1;
     opacity: 0.95;
     line-height: 1.55;
@@ -119,11 +113,6 @@ import { site, services } from "../data/site";
 
   .card-white p {
     color: var(--muted);
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 12.5rem;
   }
 
   @media (min-width: 640px) {

@@ -1,12 +1,20 @@
 ---
 import { site } from "../data/site";
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={base} aria-label={`${site.name} home`}>
-      <img class="brand-logo" src={`${base}images/wordmark.svg`} alt="" width="180" height="40" />
+      <img
+        class="brand-logo"
+        src={`${base}images/wordmark.svg`}
+        alt=""
+        width="180"
+        height="40"
+      />
       <span class="sr-only">{site.name}</span>
     </a>
 
@@ -16,7 +24,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     <div class="header-actions">
       <a class="phone-link" href={site.phoneHref}>{site.phone}</a>
-      <a class="btn btn-primary quote-btn" href={`${base}#contact`}>{site.cta.primary}</a>
+      <a class="btn btn-primary quote-btn" href={`${base}#contact`}
+        >{site.cta.primary}</a
+      >
       <button
         class="menu-toggle"
         type="button"
@@ -40,20 +50,24 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <script>
   const toggle = document.getElementById("menu-toggle");
   const panel = document.getElementById("mobile-nav");
+
+  function setOpen(open: boolean) {
+    if (!toggle || !panel) return;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    panel.hidden = !open;
+    panel.classList.toggle("is-open", open);
+  }
+
+  setOpen(false);
+
   toggle?.addEventListener("click", () => {
     const open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
-    if (panel) panel.hidden = open;
+    setOpen(!open);
   });
+
   panel?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (toggle && panel) {
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open menu");
-        panel.hidden = true;
-      }
-    });
+    link.addEventListener("click", () => setOpen(false));
   });
 </script>
 
@@ -149,12 +163,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     border-radius: 2px;
   }
 
+  /* MUST stay closed by default — display:grid was overriding [hidden] */
   .nav-mobile {
-    display: grid;
+    display: none;
     gap: 0.35rem;
     padding: 0.75rem 1rem 1.25rem;
     border-top: 1px solid var(--line);
     background: white;
+  }
+
+  .nav-mobile.is-open {
+    display: grid;
   }
 
   .nav-mobile a:not(.btn) {

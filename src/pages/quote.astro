@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import { site } from "../data/site";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout
+  title={`Request a Quote | ${site.name}`}
+  description={`Request a free cleaning quote from ${site.name}. Tell us about your home—sq ft, bedrooms, bathrooms, and pets—and we’ll follow up quickly.`}
+  path="/quote"
+>
+  <section class="quote-page" aria-labelledby="quote-heading">
+    <div class="container">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href={base}>Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Request a Quote</span>
+      </nav>
+
+      <div class="panel">
+        <header class="head">
+          <p class="eyebrow">Free Estimate</p>
+          <h1 id="quote-heading">Request a Quote</h1>
+          <p class="lead">
+            Share a few property details and we’ll get back to you with a clear
+            cleaning estimate. Serving {site.serviceArea}.
+          </p>
+          <p class="meta">
+            <a href={site.phoneHref}>{site.phone}</a>
+            <span aria-hidden="true">·</span>
+            <a href={site.emailHref}>{site.email}</a>
+          </p>
+        </header>
+        <QuoteForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quote-page {
+    padding: 1.75rem 0 3rem;
+    background: var(--pink-blush);
+    border-top: 1px solid var(--line);
+  }
+
+  .crumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .crumb a {
+    color: var(--pink-deep);
+    font-weight: 600;
+  }
+
+  .crumb a:hover {
+    color: var(--pink-hot);
+  }
+
+  .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.15rem 1.15rem 1.25rem;
+    box-shadow: var(--shadow);
+    max-width: 44rem;
+  }
+
+  .head {
+    margin-bottom: 0.85rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.35rem;
+  }
+
+  h1 {
+    margin: 0 0 0.45rem;
+    font-size: clamp(1.55rem, 3.5vw, 2rem);
+  }
+
+  .lead {
+    margin: 0 0 0.55rem;
+    font-size: 0.95rem;
+    max-width: 36rem;
+  }
+
+  .meta {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.4rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .meta a {
+    color: var(--pink-deep);
+    font-weight: 700;
+  }
+</style>

@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     <div class="header-actions">
       <a class="phone-link" href={site.phoneHref}>{site.phone}</a>
-      <a class="btn btn-primary quote-btn" href={`${base}#contact`}>{site.cta.primary}</a>
+      <a class="btn btn-primary quote-btn" href={`${base}quote`}>{site.cta.primary}</a>
       <button
         class="menu-toggle"
         type="button"
@@ -33,7 +33,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile" hidden>
     {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
     <a class="btn btn-outline" href={site.phoneHref}>{site.phone}</a>
-    <a class="btn btn-primary" href={`${base}#contact`}>{site.cta.primary}</a>
+    <a class="btn btn-primary" href={`${base}quote`}>{site.cta.primary}</a>
   </nav>
 </header>
 

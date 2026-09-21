@@ -59,6 +59,15 @@ export const services = [
     title: "Deep Cleaning",
     description:
       "A detailed top-to-bottom clean for a truly spotless home—ideal when you want every surface refreshed.",
+    details:
+      "Our deep cleaning service goes beyond the surface to eliminate dust, grime, and allergens from every corner of your home. We meticulously clean behind appliances, inside cabinets, and all those hard-to-reach spots that regular cleaning misses.",
+    includes: [
+      "Complete sanitization of all surfaces",
+      "Behind and under appliance cleaning",
+      "Detailed baseboard and trim cleaning",
+      "Window sill and track cleaning",
+      "Light fixture and fan cleaning",
+    ],
     image: `${base}images/kitchen-cabinets-open.jpg`,
     accent: "pink" as const,
   },
@@ -67,6 +76,15 @@ export const services = [
     title: "Rental Move-Out Cleaning",
     description:
       "Thorough cleaning for rental properties so homes are ready for new tenants and inspections.",
+    details:
+      "Our rental move-out cleaning is designed to help landlords and tenants pass inspections with confidence. We leave kitchens, baths, floors, and living areas thoroughly cleaned so the property is ready for the next occupant.",
+    includes: [
+      "Kitchen appliances, counters, and cabinets wiped clean",
+      "Bathroom deep clean and sanitation",
+      "Floor vacuuming, sweeping, and mopping",
+      "Dusting of surfaces, baseboards, and fixtures",
+      "Trash removal and final walkthrough presentation",
+    ],
     image: `${base}images/floors-polished.jpg`,
     accent: "white" as const,
   },
@@ -75,6 +93,15 @@ export const services = [
     title: "New Construction Cleaning",
     description:
       "Post-construction cleanup that clears dust and debris so new spaces are move-in ready.",
+    details:
+      "Our new construction cleaning service is designed to remove dust, debris, and residue left behind after construction or renovation. We ensure your space is clean, safe, and move-in ready by carefully handling every surface and detail.",
+    includes: [
+      "Removal of construction dust from all surfaces",
+      "Cleaning of floors, walls, and baseboards",
+      "Window, glass, and frame cleaning",
+      "Detailed cleaning of kitchens and bathrooms",
+      "Light fixture, vent, and ceiling fan dusting",
+    ],
     image: `${base}images/before-after-hallway.jpg`,
     accent: "pink" as const,
   },
@@ -83,6 +110,15 @@ export const services = [
     title: "Eviction Cleanouts",
     description:
       "Fast, efficient cleanouts for vacated properties so you can turn units around quickly.",
+    details:
+      "Our eviction cleanout service is designed to quickly restore your property after a tenant move-out. We remove leftover items, clean thoroughly, and prepare the space for new occupants—saving you time and hassle.",
+    includes: [
+      "Removal of trash, debris, and unwanted items",
+      "Deep cleaning of kitchens and bathrooms",
+      "Floor cleaning (vacuuming, sweeping, mopping)",
+      "Dusting of surfaces, baseboards, and fixtures",
+      "Spot cleaning of walls, doors, and high-touch areas",
+    ],
     image: `${base}images/detail-ceiling-fan-dust.jpg`,
     accent: "white" as const,
   },
@@ -91,6 +127,15 @@ export const services = [
     title: "Airbnb Cleaning",
     description:
       "Reliable turnover cleaning for vacation rentals—guest-ready between every stay.",
+    details:
+      "Our Airbnb cleaning service is designed for fast, reliable turnovers between guests. We ensure your property is spotless, sanitized, and perfectly prepared to deliver a 5-star experience every time.",
+    includes: [
+      "Complete cleaning of all rooms and guest areas",
+      "Bed making and fresh linen setup",
+      "Bathroom sanitization and restocking essentials",
+      "Kitchen cleaning and surface disinfection",
+      "Trash removal and final presentation check",
+    ],
     image: `${base}images/bedroom-beach-turnover.jpg`,
     accent: "pink" as const,
   },
@@ -99,6 +144,15 @@ export const services = [
     title: "Airbnb Management Support",
     description:
       "Cleaning-focused support that keeps listings looking sharp with less day-to-day stress.",
+    details:
+      "Our Airbnb management support is designed to take the stress out of hosting. From maintaining your property to ensuring it’s always guest-ready, we handle the cleaning details so you can enjoy consistent bookings and better reviews.",
+    includes: [
+      "Regular property cleaning and upkeep",
+      "Guest-ready setup and presentation",
+      "Coordination of cleaning schedules",
+      "Monitoring property condition between stays",
+      "Quick turnaround support for new bookings",
+    ],
     image: `${base}images/bedroom-made.jpg`,
     accent: "white" as const,
   },
@@ -107,6 +161,15 @@ export const services = [
     title: "Ozone Cleaning",
     description:
       "Advanced ozone treatment to neutralize odors and help purify indoor spaces.",
+    details:
+      "Our ozone cleaning service provides advanced odor removal and deep sanitization for your space. Using ozone technology, we eliminate bacteria, viruses, smoke, and stubborn odors at the source—leaving your environment fresh, clean, and purified.",
+    includes: [
+      "Odor removal from smoke, pets, and mold",
+      "Air and surface disinfection",
+      "Treatment of rooms, furniture, and fabrics",
+      "Elimination of bacteria and airborne contaminants",
+      "Safe and effective deep purification process",
+    ],
     image: `${base}images/bathroom-modern.jpg`,
     accent: "pink" as const,
   },
@@ -115,6 +178,15 @@ export const services = [
     title: "Office Cleaning",
     description:
       "Professional commercial cleaning that keeps workspaces fresh, tidy, and welcoming.",
+    details:
+      "Our office cleaning service is designed to keep your workspace clean, organized, and professional. We ensure a hygienic environment for your team and clients, helping improve productivity and create a positive impression.",
+    includes: [
+      "Cleaning of desks, workstations, and common areas",
+      "Floor care (vacuuming, sweeping, mopping)",
+      "Restroom cleaning and sanitization",
+      "Trash removal and bin management",
+      "Disinfection of high-touch surfaces (doors, handles, switches)",
+    ],
     image: `${base}images/living-room-corner.jpg`,
     accent: "white" as const,
   },

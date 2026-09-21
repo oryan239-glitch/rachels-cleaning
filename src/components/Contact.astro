@@ -1,34 +1,32 @@
 ---
+import QuoteForm from "./QuoteForm.astro";
 import { site } from "../data/site";
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const quoteHref = `${base}quote`;
 ---
 
 <section class="contact" id="contact" aria-labelledby="contact-heading">
   <div class="container">
     <div class="panel">
-      <div class="copy">
-        <h2 id="contact-heading">Ready for a spotless home?</h2>
-        <p class="lead">
-          Tell us about your property for a clear cleaning quote—no obligation.
-        </p>
+      <header class="head">
+        <div class="copy">
+          <h2 id="contact-heading">Request a Quote</h2>
+          <p class="lead">
+            A few property details for a clear estimate—no obligation.
+          </p>
+        </div>
         <p class="meta">
           <a href={site.phoneHref}>{site.phone}</a>
           <span aria-hidden="true">·</span>
           <a href={site.emailHref}>{site.email}</a>
         </p>
-      </div>
-      <div class="cta">
-        <a class="btn btn-primary" href={quoteHref}>{site.cta.primary}</a>
-        <a class="btn btn-outline" href={site.phoneHref}>Call {site.phone}</a>
-      </div>
+      </header>
+      <QuoteForm />
     </div>
   </div>
 </section>
 
 <style>
   .contact {
-    padding: 1rem 0 1.25rem;
+    padding: 1rem 0 1.35rem;
     background: var(--bg);
     border-top: 1px solid var(--line, #ebe6ea);
   }
@@ -37,26 +35,33 @@ const quoteHref = `${base}quote`;
     background: #fff;
     border: 1px solid var(--line, #ebe6ea);
     border-radius: 12px;
-    padding: 0.85rem 1rem;
+    padding: 0.75rem 0.9rem 0.85rem;
     box-shadow: var(--shadow);
-    display: grid;
-    gap: 0.75rem;
-    align-items: center;
+    max-width: 42rem;
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 0.85rem;
+    margin-bottom: 0.5rem;
   }
 
   h2 {
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.15rem;
     font-family: var(--font-display, Georgia, serif);
-    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-size: clamp(1.15rem, 2.4vw, 1.35rem);
     line-height: 1.2;
   }
 
   .lead {
-    margin: 0 0 0.35rem;
+    margin: 0;
     color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.4;
-    max-width: 34rem;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    max-width: none;
   }
 
   .meta {
@@ -65,7 +70,7 @@ const quoteHref = `${base}quote`;
     flex-wrap: wrap;
     gap: 0.2rem 0.35rem;
     color: var(--muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 
   .meta a {
@@ -73,22 +78,10 @@ const quoteHref = `${base}quote`;
     font-weight: 700;
   }
 
-  .cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .cta .btn {
-    padding: 0.5rem 0.95rem;
-    font-size: 0.86rem;
-  }
-
   @media (min-width: 800px) {
     .panel {
-      grid-template-columns: 1.5fr auto;
-      gap: 1rem;
-      padding: 0.9rem 1.15rem;
+      padding: 0.85rem 1.1rem 0.95rem;
+      max-width: 48rem;
     }
   }
 </style>

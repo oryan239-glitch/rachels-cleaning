@@ -194,7 +194,7 @@ export const services = [
       "Trash removal and bin management",
       "Disinfection of high-touch surfaces (doors, handles, switches)",
     ],
-    image: `${base}images/living-room-corner.jpg`,
+    image: `${base}images/office-cleaning.jpg`,
     accent: "pink" as const,
     category: "commercial" as const,
   },

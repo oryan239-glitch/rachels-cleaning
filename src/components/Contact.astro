@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 <section class="contact" id="contact" aria-labelledby="contact-heading">
   <div class="container">
-    <div class="panel">
+    <div class="panel" id="quote">
       <header class="head">
         <div class="copy">
           <h2 id="contact-heading">Request a Quote</h2>
@@ -19,19 +19,31 @@ import { site } from "../data/site";
           <a href={site.emailHref}>{site.email}</a>
         </p>
       </header>
-      <details class="quote-details">
-        <summary class="quote-summary">Open quote form</summary>
-        <QuoteForm />
-      </details>
+      <QuoteForm />
     </div>
   </div>
 </section>
+
+<script>
+  function focusQuote() {
+    const el = document.getElementById("contact");
+    if (!el) return;
+    if (location.hash === "#contact" || location.hash === "#quote") {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const first = el.querySelector<HTMLInputElement>("input, textarea, select");
+      first?.focus({ preventScroll: true });
+    }
+  }
+  focusQuote();
+  window.addEventListener("hashchange", focusQuote);
+</script>
 
 <style>
   .contact {
     padding: 0.75rem 0 1rem;
     background: var(--bg);
     border-top: 1px solid var(--line, #ebe6ea);
+    scroll-margin-top: 5.5rem;
   }
 
   .panel {
@@ -41,6 +53,7 @@ import { site } from "../data/site";
     padding: 0.55rem 0.75rem 0.65rem;
     box-shadow: var(--shadow);
     max-width: 42rem;
+    scroll-margin-top: 5.5rem;
   }
 
   .head {
@@ -87,17 +100,4 @@ import { site } from "../data/site";
       max-width: 48rem;
     }
   }
-
-  .quote-details {
-    margin-top: 0.35rem;
-  }
-  .quote-summary {
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--pink-deep);
-    font-size: 0.9rem;
-    list-style: none;
-    padding: 0.45rem 0;
-  }
-  .quote-summary::-webkit-details-marker { display: none; }
 </style>

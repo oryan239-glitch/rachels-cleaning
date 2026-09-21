@@ -17,7 +17,7 @@ Prefer these real photos over stock. Source: live site scrapes under `/workspace
 - `living-dining-open.jpg` / `living-room-modern.jpg` — feature band
 - `lanai-patio.jpg` / `dining-water-view.jpg` / `home-exterior-front.jpg` — gallery + contact
 - `home-exterior-dusk.jpg` — CTA banner background
-- `wordmark.svg` — header/footer wordmark (Cleaning & Home Watch)
+- `wordmark.svg` — header/footer wordmark (Cleaning and Home Watch)
 
 ## Available but unused on page
 - `team-portrait-01.jpg` … `team-portrait-06.jpg`

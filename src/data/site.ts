@@ -193,7 +193,7 @@ export const services = [
 
 export const aboutHighlights = [
   "Customized Cleaning Plans",
-  "Trained & Trusted Professionals",
+  "Trained and Trusted Professionals",
   "Reliable Local Southwest Florida Team",
   "Eco-Conscious Products Available",
 ] as const;
@@ -202,7 +202,7 @@ export const stats = [
   { value: "500+", label: "Homes Cleaned" },
   { value: "8+", label: "Service Types" },
   { value: "5★", label: "Client Reviews" },
-  { value: "SWFL", label: "Local & Trusted" },
+  { value: "SWFL", label: "Local and Trusted" },
 ] as const;
 
 export const gallery = [

@@ -19,7 +19,10 @@ import { site } from "../data/site";
           <a href={site.emailHref}>{site.email}</a>
         </p>
       </header>
-      <QuoteForm />
+      <details class="quote-details">
+        <summary class="quote-summary">Open quote form</summary>
+        <QuoteForm />
+      </details>
     </div>
   </div>
 </section>
@@ -84,4 +87,17 @@ import { site } from "../data/site";
       max-width: 48rem;
     }
   }
+
+  .quote-details {
+    margin-top: 0.35rem;
+  }
+  .quote-summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--pink-deep);
+    font-size: 0.9rem;
+    list-style: none;
+    padding: 0.45rem 0;
+  }
+  .quote-summary::-webkit-details-marker { display: none; }
 </style>

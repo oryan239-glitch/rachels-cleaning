@@ -1,16 +1,15 @@
 /**
- * Single source of truth for Rachel's Cleaning Services.
+ * Single source of truth for Rachel's Cleaning and Home Watch Services.
  * Edit this file to update name, phone, email, address, CTAs, and content.
- * Cleaning-only branding — no Home Watch.
  */
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
 export const site = {
-  name: "Rachel's Cleaning Services",
-  legalName: "Rachel's Cleaning Services LLC",
-  tagline: "Professional Cleaning Services You Can Trust",
+  name: "Rachel's Cleaning and Home Watch Services",
+  legalName: "Rachel's Cleaning and Home Watch Services LLC",
+  tagline: "Professional Cleaning and Home Watch Services You Can Trust",
   owner: "Rachel Ryan",
   phone: "(239) 345-0000",
   phoneHref: "tel:+12393450000",

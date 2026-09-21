@@ -58,6 +58,48 @@ import { site } from "../data/site";
   </div>
 </form>
 
+
+<script define:vars={{ toEmail: site.email, companyName: site.name }}>
+  const form = document.getElementById("quote-form");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.reportValidity()) return;
+
+    const value = (id: string) =>
+      (document.getElementById(id) as HTMLInputElement | null)?.value?.trim() || "";
+
+    const pets =
+      (form.querySelector('input[name="Pets"]:checked') as HTMLInputElement | null)
+        ?.value || "";
+
+    const name = value("customer-name");
+    const phone = value("phone");
+    const address = value("address");
+    const email = value("email");
+    const sqft = value("sqft");
+    const bedrooms = value("bedrooms");
+    const bathrooms = value("bathrooms");
+
+    const subject = `Quote request from ${name || "website visitor"}`;
+    const body = [
+      `New quote request for ${companyName}`,
+      "",
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Address: ${address}`,
+      `Email: ${email}`,
+      `Approx. sq ft: ${sqft}`,
+      `Bedrooms: ${bedrooms}`,
+      `Bathrooms: ${bathrooms}`,
+      `Pets: ${pets}`,
+    ].join("\n");
+
+    const href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+  });
+</script>
+
 <style>
   .quote-form {
     display: grid;

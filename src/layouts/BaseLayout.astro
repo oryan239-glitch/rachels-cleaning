@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { site } from "../data/site";
+import CallBar from "../components/CallBar.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -12,7 +13,7 @@ interface Props {
 
 const {
   title = `${site.name} | Fort Myers & San Carlos Park, FL`,
-  description = `Professional home cleaning in Fort Myers and San Carlos Park, FL. Deep cleans, Airbnb turnovers, move-outs, and more. Call ${site.phone}.`,
+  description = `Professional home cleaning and home watch in Fort Myers and San Carlos Park, FL. Deep cleans, Airbnb turnovers, move-outs, and more. Call ${site.phone}.`,
   path = "/",
 } = Astro.props;
 
@@ -60,7 +61,7 @@ const jsonLd = {
     <meta name="author" content={site.owner} />
     <meta
       name="keywords"
-      content="house cleaning Fort Myers, maid service San Carlos Park, Airbnb cleaning SWFL, deep cleaning Fort Myers, move-out cleaning"
+      content="house cleaning Fort Myers, home watch Fort Myers, maid service San Carlos Park, Airbnb cleaning SWFL, deep cleaning Fort Myers, move-out cleaning"
     />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
@@ -89,6 +90,7 @@ const jsonLd = {
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <CallBar />
     <Header />
     <main id="main">
       <slot />

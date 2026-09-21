@@ -17,12 +17,11 @@ Prefer these real photos over stock. Source: live site scrapes under `/workspace
 - `living-dining-open.jpg` / `living-room-modern.jpg` — feature band
 - `lanai-patio.jpg` / `dining-water-view.jpg` / `home-exterior-front.jpg` — gallery + contact
 - `home-exterior-dusk.jpg` — CTA banner background
-- `wordmark.svg` — cleaning-only header/footer wordmark
+- `wordmark.svg` — header/footer wordmark (Cleaning & Home Watch)
 
 ## Available but unused on page
 - `team-portrait-01.jpg` … `team-portrait-06.jpg`
 - `texture-soft-light.jpg`
 
-## Intentionally excluded
-- Original logo with Home Watch text (not deployed)
-- Home Watch marketing copy/sections
+## Notes
+- Company branding includes Home Watch in the name; dedicated Home Watch service pages are not required unless content is added later.

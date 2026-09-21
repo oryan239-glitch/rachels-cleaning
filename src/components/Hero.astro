@@ -17,16 +17,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <div class="container hero-content">
     <p class="hero-kicker">{site.name}</p>
     <h1 id="hero-heading">
-      Professional Cleaning
-      <em>Services</em>
-      You Can Trust
+      Cleaning &amp; Home Watch
+      <em>You Can Trust</em>
     </h1>
     <p class="hero-copy">
-      Spotless homes across {site.serviceArea}. Deep cleans, move-outs, Airbnb
-      turnovers, and more—handled with care by a local team you can count on.
+      Spotless homes and peace of mind across {site.serviceArea}. Deep cleans,
+      move-outs, Airbnb turnovers, and home watch—handled with care by a local
+      team you can count on.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href={`${base}#quote`}>Request a Quote</a>
+      <a class="btn btn-primary" href={site.phoneHref}>Call {site.phone}</a>
+      <a class="btn btn-ghost" href={`${base}#quote`}>Request a Quote</a>
       <a class="btn btn-ghost" href={`${base}#services`}>View Services</a>
     </div>
     <ul class="hero-pills" aria-label="Highlights">

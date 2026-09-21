@@ -14,8 +14,8 @@ export const site = {
   owner: "Rachel Ryan",
   phone: "(239) 345-0000",
   phoneHref: "tel:+12393450000",
-  email: "RACHELSCLEANING123@gmail.com",
-  emailHref: "mailto:RACHELSCLEANING123@gmail.com",
+  email: "rachelscleaning123@gmail.com",
+  emailHref: "mailto:rachelscleaning123@gmail.com",
   address: {
     line1: "San Carlos Park",
     line2: "Fort Myers, FL 33967",

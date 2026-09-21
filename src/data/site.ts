@@ -33,6 +33,7 @@ export const site = {
   nav: [
     { label: "Home", href: base },
     { label: "Cleaning Services", href: `${base}#services` },
+    { label: "Commercial", href: `${base}#commercial` },
     { label: "About Us", href: `${base}#about` },
     { label: "Contact Us", href: `${base}#contact` },
   ],
@@ -69,6 +70,7 @@ export const services = [
     ],
     image: `${base}images/kitchen-cabinets-open.jpg`,
     accent: "pink" as const,
+    category: "residential" as const,
   },
   {
     id: "rental-move-out",
@@ -86,6 +88,7 @@ export const services = [
     ],
     image: `${base}images/floors-polished.jpg`,
     accent: "white" as const,
+    category: "residential" as const,
   },
   {
     id: "new-construction",
@@ -103,6 +106,7 @@ export const services = [
     ],
     image: `${base}images/before-after-hallway.jpg`,
     accent: "pink" as const,
+    category: "residential" as const,
   },
   {
     id: "eviction-cleanouts",
@@ -120,6 +124,7 @@ export const services = [
     ],
     image: `${base}images/detail-ceiling-fan-dust.jpg`,
     accent: "white" as const,
+    category: "residential" as const,
   },
   {
     id: "airbnb-cleaning",
@@ -137,6 +142,7 @@ export const services = [
     ],
     image: `${base}images/bedroom-beach-turnover.jpg`,
     accent: "pink" as const,
+    category: "residential" as const,
   },
   {
     id: "airbnb-management",
@@ -154,6 +160,7 @@ export const services = [
     ],
     image: `${base}images/bedroom-made.jpg`,
     accent: "white" as const,
+    category: "residential" as const,
   },
   {
     id: "ozone-cleaning",
@@ -171,6 +178,7 @@ export const services = [
     ],
     image: `${base}images/bathroom-modern.jpg`,
     accent: "pink" as const,
+    category: "residential" as const,
   },
   {
     id: "office-cleaning",
@@ -187,9 +195,37 @@ export const services = [
       "Disinfection of high-touch surfaces (doors, handles, switches)",
     ],
     image: `${base}images/living-room-corner.jpg`,
+    accent: "pink" as const,
+    category: "commercial" as const,
+  },
+  {
+    id: "general-commercial-cleaning",
+    title: "General Commercial Cleaning",
+    description:
+      "Reliable, high-quality cleaning services tailored for businesses, ensuring a professional environment.",
+    details:
+      "Our general commercial cleaning service is tailored for businesses that need a consistently clean, professional environment. We customize schedules and scopes so offices, retail spaces, and other commercial properties stay presentation-ready for staff and customers.",
+    includes: [
+      "Customized cleaning plans for your business",
+      "Floor care (vacuuming, sweeping, mopping)",
+      "Restroom cleaning and sanitization",
+      "Kitchenette and break-room upkeep",
+      "Trash removal and high-touch surface disinfection",
+    ],
+    image: `${base}images/living-room-modern.jpg`,
     accent: "white" as const,
+    category: "commercial" as const,
   },
 ] as const;
+
+
+export const residentialServices = services.filter(
+  (service) => service.category === "residential",
+);
+
+export const commercialServices = services.filter(
+  (service) => service.category === "commercial",
+);
 
 export const aboutHighlights = [
   "Customized Cleaning Plans",
@@ -200,7 +236,7 @@ export const aboutHighlights = [
 
 export const stats = [
   { value: "500+", label: "Homes Cleaned" },
-  { value: "8+", label: "Service Types" },
+  { value: "9+", label: "Service Types" },
   { value: "5★", label: "Client Reviews" },
   { value: "SWFL", label: "Local and Trusted" },
 ] as const;

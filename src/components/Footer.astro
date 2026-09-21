@@ -1,5 +1,5 @@
 ---
-import { site, services } from "../data/site";
+import { site, residentialServices, commercialServices } from "../data/site";
 const year = new Date().getFullYear();
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -21,7 +21,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <h3>Services</h3>
       <ul>
         {
-          services.slice(0, 5).map((s) => (
+          residentialServices.map((s) => (
+            <li>
+              <a href={`${base}services/${s.id}`}>{s.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3>Commercial</h3>
+      <ul>
+        {
+          commercialServices.map((s) => (
             <li>
               <a href={`${base}services/${s.id}`}>{s.title}</a>
             </li>
@@ -136,7 +149,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   @media (min-width: 760px) {
     .footer-grid {
-      grid-template-columns: 1.45fr 1fr 1fr 1.1fr;
+      grid-template-columns: 1.35fr 1fr 1fr 1fr 1.05fr;
     }
   }
 </style>

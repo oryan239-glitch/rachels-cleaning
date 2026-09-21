@@ -1,5 +1,5 @@
 ---
-import { services } from "../data/site";
+import { residentialServices, commercialServices } from "../data/site";
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
@@ -18,7 +18,46 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     <div class="grid">
       {
-        services.map((service) => (
+        residentialServices.map((service) => (
+          <a
+            class:list={["card", service.accent === "pink" ? "card-pink" : "card-white"]}
+            href={`${base}services/${service.id}`}
+          >
+            <div class="photo">
+              <img
+                src={service.image}
+                alt=""
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <span class="more">Learn more</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-blush commercial" id="commercial" aria-labelledby="commercial-heading">
+  <div class="container">
+    <div class="intro">
+      <p class="eyebrow">For Businesses</p>
+      <h2 id="commercial-heading" class="section-title">
+        Commercial <span class="accent">Services</span>
+      </h2>
+      <p class="lead">
+        Professional cleaning for offices and businesses across Southwest
+        Florida—keeping workspaces fresh, tidy, and welcoming.
+      </p>
+    </div>
+
+    <div class="grid">
+      {
+        commercialServices.map((service) => (
           <a
             class:list={["card", service.accent === "pink" ? "card-pink" : "card-white"]}
             href={`${base}services/${service.id}`}
@@ -46,6 +85,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .intro {
     margin-bottom: 2.5rem;
     max-width: 40rem;
+  }
+
+  .commercial {
+    padding-top: 0.5rem;
   }
 
   .grid {

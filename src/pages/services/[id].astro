@@ -34,7 +34,7 @@ const quoteHref = `${base}#quote`;
 
       <div class="layout">
         <div class="copy">
-          <p class="eyebrow">Cleaning Service</p>
+          <p class="eyebrow">{service.category === "commercial" ? "Commercial Service" : "Cleaning Service"}</p>
           <h1>{service.title}</h1>
           <p class="lead">{service.details}</p>
 

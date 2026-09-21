@@ -1,39 +1,59 @@
 ---
 import { site } from "../data/site";
+
+const formSubmitAction = `https://formsubmit.co/${site.email}`;
+const subject = "New quote request — Rachel's Cleaning";
 ---
 
 <form
   class="quote-form"
   id="quote-form"
-  action={`mailto:${site.email}`}
-  method="post"
-  enctype="text/plain"
+  action={formSubmitAction}
+  method="POST"
 >
-  <div class="field">
+  <input type="hidden" name="_subject" value={subject} />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_next" id="form-next" value={`${site.url}/#quote-sent`} />
+  {/* Honeypot — leave empty; bots that fill it are discarded */}
+  <input
+    type="text"
+    name="_honey"
+    class="honey"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <p class="success" id="quote-success" hidden role="status">
+    Thanks! Your quote request was sent to Rachel. She’ll be in touch soon.
+  </p>
+
+  <div class="field field-name">
     <label for="customer-name">Customer name</label>
     <input id="customer-name" type="text" name="Customer name" required autocomplete="name" />
   </div>
-  <div class="field">
+  <div class="field field-phone">
     <label for="phone">Phone</label>
     <input id="phone" type="tel" name="Phone" required autocomplete="tel" />
   </div>
-  <div class="field">
+  <div class="field field-address">
     <label for="address">Address</label>
     <input id="address" type="text" name="Address" required autocomplete="street-address" />
   </div>
-  <div class="field">
+  <div class="field field-email">
     <label for="email">Email</label>
     <input id="email" type="email" name="Email" required autocomplete="email" />
   </div>
-  <div class="field">
+  <div class="field field-sqft">
     <label for="sqft">Approx. sq ft</label>
     <input id="sqft" type="number" name="Approximate square footage" min="1" step="1" required inputmode="numeric" />
   </div>
-  <div class="field">
+  <div class="field field-bedrooms">
     <label for="bedrooms">Bedrooms</label>
     <input id="bedrooms" type="number" name="Bedrooms" min="0" step="1" required inputmode="numeric" />
   </div>
-  <div class="field">
+  <div class="field field-bathrooms">
     <label for="bathrooms">Bathrooms</label>
     <input id="bathrooms" type="number" name="Bathrooms" min="0" step="0.5" required inputmode="decimal" />
   </div>
@@ -53,58 +73,50 @@ import { site } from "../data/site";
     </fieldset>
     <div class="actions">
       <button class="btn btn-primary" type="submit">{site.cta.primary}</button>
-      <p class="hint">Opens your email app with details ready to send.</p>
+      <p class="hint">
+        Sends straight to Rachel—no email app needed. First-time submissions may ask her to confirm once via FormSubmit.
+      </p>
     </div>
   </div>
 </form>
 
+<script>
+  const next = document.getElementById("form-next");
+  if (next instanceof HTMLInputElement) {
+    const path = `${window.location.origin}${window.location.pathname}`;
+    next.value = `${path}#quote-sent`;
+  }
 
-<script define:vars={{ toEmail: site.email, companyName: site.name }}>
-  const form = document.getElementById("quote-form");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
-    if (!form.reportValidity()) return;
-
-    const value = (id: string) =>
-      (document.getElementById(id) as HTMLInputElement | null)?.value?.trim() || "";
-
-    const pets =
-      (form.querySelector('input[name="Pets"]:checked') as HTMLInputElement | null)
-        ?.value || "";
-
-    const name = value("customer-name");
-    const phone = value("phone");
-    const address = value("address");
-    const email = value("email");
-    const sqft = value("sqft");
-    const bedrooms = value("bedrooms");
-    const bathrooms = value("bathrooms");
-
-    const subject = `Quote request from ${name || "website visitor"}`;
-    const body = [
-      `New quote request for ${companyName}`,
-      "",
-      `Name: ${name}`,
-      `Phone: ${phone}`,
-      `Address: ${address}`,
-      `Email: ${email}`,
-      `Approx. sq ft: ${sqft}`,
-      `Bedrooms: ${bedrooms}`,
-      `Bathrooms: ${bathrooms}`,
-      `Pets: ${pets}`,
-    ].join("\n");
-
-    const href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-  });
+  const success = document.getElementById("quote-success");
+  if (success && location.hash === "#quote-sent") {
+    success.hidden = false;
+    document.getElementById("quote")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 </script>
 
 <style>
+  .honey {
+    display: none !important;
+  }
+
+  .success {
+    grid-column: 1 / -1;
+    margin: 0 0 0.35rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--pink) 14%, white);
+    border: 1px solid color-mix(in srgb, var(--pink-hot) 35%, white);
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
   .quote-form {
     display: grid;
     gap: 0.4rem 0.6rem;
     grid-template-columns: 1fr;
+    position: relative;
   }
 
   .field {
@@ -213,6 +225,7 @@ import { site } from "../data/site";
     font-size: 0.7rem;
     color: var(--muted);
     line-height: 1.25;
+    max-width: 18rem;
   }
 
   /* Dense 2-col: name|phone, address|email; then sqft|beds|baths; pets+submit row */
@@ -221,16 +234,16 @@ import { site } from "../data/site";
       grid-template-columns: repeat(6, 1fr);
     }
 
-    .field:nth-child(1),
-    .field:nth-child(2),
-    .field:nth-child(3),
-    .field:nth-child(4) {
+    .field-name,
+    .field-phone,
+    .field-address,
+    .field-email {
       grid-column: span 3;
     }
 
-    .field:nth-child(5),
-    .field:nth-child(6),
-    .field:nth-child(7) {
+    .field-sqft,
+    .field-bedrooms,
+    .field-bathrooms {
       grid-column: span 2;
     }
 

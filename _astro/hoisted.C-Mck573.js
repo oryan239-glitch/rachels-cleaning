@@ -1,1 +1,0 @@
-import"./hoisted.D_mghGsv.js";function e(){const t=document.getElementById("contact");t&&(location.hash==="#contact"||location.hash==="#quote")&&(t.scrollIntoView({behavior:"smooth",block:"start"}),t.querySelector("input, textarea, select")?.focus({preventScroll:!0}))}e();window.addEventListener("hashchange",e);

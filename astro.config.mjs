@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: 'https://rachelscleaning.net',
+  site: 'https://rachelscleaningswfl.com',
   output: 'static',
   compressHTML: true,
 });

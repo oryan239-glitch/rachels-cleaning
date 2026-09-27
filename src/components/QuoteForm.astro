@@ -1,8 +1,14 @@
 ---
-import { site } from "../data/site";
+import { site, residentialServices, commercialServices } from "../data/site";
 
 const formSubmitAction = `https://formsubmit.co/${site.email}`;
 const subject = "New quote request — Rachel's Cleaning";
+const serviceOptions = [...residentialServices, ...commercialServices].map((service) => ({
+  id: service.id,
+  title: service.title,
+}));
+const extraServiceOptions = ["Home Watch", "Not sure / Other"];
+const timeOptions = ["Morning", "Afternoon", "Flexible"];
 ---
 
 <form
@@ -44,6 +50,30 @@ const subject = "New quote request — Rachel's Cleaning";
   <div class="field field-email">
     <label for="email">Email</label>
     <input id="email" type="email" name="Email" required autocomplete="email" />
+  </div>
+  <div class="field field-service">
+    <label for="service-type">Type of cleaning</label>
+    <select id="service-type" name="Type of cleaning" required>
+      <option value="" disabled selected>Select a service</option>
+      {serviceOptions.map((option) => (
+        <option value={option.title} data-service-id={option.id}>{option.title}</option>
+      ))}
+      {extraServiceOptions.map((option) => (
+        <option value={option}>{option}</option>
+      ))}
+    </select>
+  </div>
+  <div class="field field-date">
+    <label for="preferred-date">Preferred cleaning date</label>
+    <input id="preferred-date" type="date" name="Preferred cleaning date" required />
+  </div>
+  <div class="field field-time">
+    <label for="preferred-time">Preferred time</label>
+    <select id="preferred-time" name="Preferred time">
+      {timeOptions.map((option) => (
+        <option value={option} selected={option === "Flexible"}>{option}</option>
+      ))}
+    </select>
   </div>
   <div class="field field-sqft">
     <label for="sqft">Approx. sq ft</label>
@@ -87,6 +117,24 @@ const subject = "New quote request — Rachel's Cleaning";
     next.value = `${path}#quote-sent`;
   }
 
+  // Static build: compute "today" in the visitor's local time so past dates can't be picked.
+  const dateInput = document.getElementById("preferred-date");
+  if (dateInput instanceof HTMLInputElement) {
+    const now = new Date();
+    const pad = (n: number) => String(n).padStart(2, "0");
+    dateInput.min = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  }
+
+  // Preselect the service when arriving from a service detail page (?service=<id>#quote).
+  const serviceSelect = document.getElementById("service-type");
+  const serviceParam = new URLSearchParams(location.search).get("service");
+  if (serviceSelect instanceof HTMLSelectElement && serviceParam) {
+    const match = Array.from(serviceSelect.options).find(
+      (option) => option.dataset.serviceId === serviceParam,
+    );
+    if (match) serviceSelect.value = match.value;
+  }
+
   const success = document.getElementById("quote-success");
   if (success && location.hash === "#quote-sent") {
     success.hidden = false;
@@ -115,8 +163,26 @@ const subject = "New quote request — Rachel's Cleaning";
   .quote-form {
     display: grid;
     gap: 0.4rem 0.6rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     position: relative;
+  }
+
+  /* Mobile: full-width fields, except date|time and sqft|beds|baths share rows */
+  .quote-form > .field,
+  .quote-form > .success,
+  .quote-form > .footer-row {
+    grid-column: 1 / -1;
+  }
+
+  .quote-form > .field-date,
+  .quote-form > .field-time {
+    grid-column: span 3;
+  }
+
+  .quote-form > .field-sqft,
+  .quote-form > .field-bedrooms,
+  .quote-form > .field-bathrooms {
+    grid-column: span 2;
   }
 
   .field {
@@ -155,8 +221,12 @@ const subject = "New quote request — Rachel's Cleaning";
   .quote-form input[type="text"],
   .quote-form input[type="tel"],
   .quote-form input[type="email"],
-  .quote-form input[type="number"] {
+  .quote-form input[type="number"],
+  .quote-form input[type="date"],
+  .quote-form select {
     width: 100%;
+    min-width: 0;
+    color: var(--ink-soft);
     border: 1px solid #d8d2d6;
     border-radius: 6px;
     padding: 0.3rem 0.5rem;
@@ -167,7 +237,23 @@ const subject = "New quote request — Rachel's Cleaning";
     min-height: 1.85rem;
   }
 
-  .quote-form input:focus {
+  .quote-form input[type="date"] {
+    display: block;
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: left;
+  }
+
+  .quote-form input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
+  .quote-form select {
+    cursor: pointer;
+  }
+
+  .quote-form input:focus,
+  .quote-form select:focus {
     outline: 2px solid color-mix(in srgb, var(--pink) 35%, white);
     border-color: var(--pink-hot);
     background: #fff;
@@ -228,26 +314,25 @@ const subject = "New quote request — Rachel's Cleaning";
     max-width: 18rem;
   }
 
-  /* Dense 2-col: name|phone, address|email; then sqft|beds|baths; pets+submit row */
+  /* Dense: name|phone, address|email; service|date|time; sqft|beds|baths; pets+submit row */
   @media (min-width: 640px) {
-    .quote-form {
-      grid-template-columns: repeat(6, 1fr);
-    }
-
-    .field-name,
-    .field-phone,
-    .field-address,
-    .field-email {
+    .quote-form > .field-name,
+    .quote-form > .field-phone,
+    .quote-form > .field-address,
+    .quote-form > .field-email {
       grid-column: span 3;
     }
 
-    .field-sqft,
-    .field-bedrooms,
-    .field-bathrooms {
+    .quote-form > .field-service,
+    .quote-form > .field-date,
+    .quote-form > .field-time,
+    .quote-form > .field-sqft,
+    .quote-form > .field-bedrooms,
+    .quote-form > .field-bathrooms {
       grid-column: span 2;
     }
 
-    .footer-row {
+    .quote-form > .footer-row {
       grid-column: 1 / -1;
     }
   }

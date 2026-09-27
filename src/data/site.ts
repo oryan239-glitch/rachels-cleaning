@@ -25,7 +25,7 @@ export const site = {
     country: "US",
   },
   serviceArea: "Fort Myers, San Carlos Park, and Southwest Florida",
-  url: "https://rachelscleaning.net",
+  url: "https://rachelscleaningswfl.com",
   cta: {
     primary: "Request A Quote",
     call: "Call Now",

@@ -181,6 +181,24 @@ export const services = [
     category: "residential" as const,
   },
   {
+    id: "carpet-shampooing",
+    title: "Carpet Shampooing",
+    description:
+      "Deep carpet shampooing that lifts dirt, stains, and odors for fresher, softer floors.",
+    details:
+      "Our carpet shampooing service delivers a professional deep clean for homes that need more than a surface vacuum. We pre-treat stains, extract embedded dirt, and target pet odors and high-traffic areas so carpets look and feel refreshed. Ideal for everyday upkeep, seasonal refreshes, and rental turnovers when floors need to impress.",
+    includes: [
+      "Pre-treatment of stains and high-traffic soil",
+      "Deep shampoo extraction for a thorough clean",
+      "Pet odor treatment for carpets and rugs",
+      "Focused care for hallways, living rooms, and other busy areas",
+      "Faster dry time with careful furniture and floor protection",
+    ],
+    image: `${base}images/floors-polished.jpg`,
+    accent: "white" as const,
+    category: "residential" as const,
+  },
+  {
     id: "office-cleaning",
     title: "Office Cleaning",
     description:

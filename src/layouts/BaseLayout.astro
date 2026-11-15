@@ -56,6 +56,7 @@ const jsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-site-verification" content="T9_IE6-ekgxACgyPFW6kTEbsecHWhAgoX7R8TosddPw" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.owner} />
@@ -87,6 +88,14 @@ const jsonLd = {
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQFXPD16L1" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MQFXPD16L1');
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

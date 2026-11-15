@@ -36,6 +36,9 @@ const quoteHref = `${base}?service=${service.id}#quote`;
         <div class="copy">
           <p class="eyebrow">{service.category === "commercial" ? "Commercial Service" : "Cleaning Service"}</p>
           <h1>{service.title}</h1>
+          {"frequency" in service && service.frequency ? (
+            <p class="frequency">{service.frequency}</p>
+          ) : null}
           <p class="lead">{service.details}</p>
 
           <h2>What’s Included</h2>
@@ -102,6 +105,14 @@ const quoteHref = `${base}?service=${service.id}#quote`;
   h1 {
     font-size: clamp(2rem, 4.5vw, 2.85rem);
     margin-bottom: 0.75rem;
+  }
+
+  .frequency {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    letter-spacing: 0.04em;
+    margin: -0.15rem 0 1rem;
   }
 
   .lead {

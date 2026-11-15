@@ -9,6 +9,7 @@ const serviceOptions = [...residentialServices, ...commercialServices].map((serv
 }));
 const extraServiceOptions = ["Home Watch", "Not sure / Other"];
 const timeOptions = ["Morning", "Afternoon", "Flexible"];
+const frequencyOptions = ["One-time", "Weekly", "Biweekly", "Monthly"];
 ---
 
 <form
@@ -60,6 +61,14 @@ const timeOptions = ["Morning", "Afternoon", "Flexible"];
       ))}
       {extraServiceOptions.map((option) => (
         <option value={option}>{option}</option>
+      ))}
+    </select>
+  </div>
+  <div class="field field-frequency" id="frequency-field" hidden>
+    <label for="how-often">How often?</label>
+    <select id="how-often" name="How often" disabled>
+      {frequencyOptions.map((option) => (
+        <option value={option} selected={option === "One-time"}>{option}</option>
       ))}
     </select>
   </div>
@@ -135,6 +144,21 @@ const timeOptions = ["Morning", "Afternoon", "Flexible"];
     if (match) serviceSelect.value = match.value;
   }
 
+  // Show "How often?" only for Regular Maintenance Cleaning; disable it otherwise
+  // so the field is omitted from other quote emails.
+  const frequencyField = document.getElementById("frequency-field");
+  const howOften = document.getElementById("how-often");
+  const syncFrequencyField = () => {
+    const selected = serviceSelect instanceof HTMLSelectElement ? serviceSelect.selectedOptions[0] : null;
+    const show = selected?.dataset.serviceId === "regular-maintenance";
+    if (frequencyField instanceof HTMLElement) frequencyField.hidden = !show;
+    if (howOften instanceof HTMLSelectElement) howOften.disabled = !show;
+  };
+  if (serviceSelect instanceof HTMLSelectElement) {
+    serviceSelect.addEventListener("change", syncFrequencyField);
+  }
+  syncFrequencyField();
+
   const success = document.getElementById("quote-success");
   if (success && location.hash === "#quote-sent") {
     success.hidden = false;
@@ -172,6 +196,10 @@ const timeOptions = ["Morning", "Afternoon", "Flexible"];
   .quote-form > .success,
   .quote-form > .footer-row {
     grid-column: 1 / -1;
+  }
+
+  .quote-form > .field-frequency[hidden] {
+    display: none;
   }
 
   .quote-form > .field-date,
@@ -330,6 +358,11 @@ const timeOptions = ["Morning", "Afternoon", "Flexible"];
     .quote-form > .field-bedrooms,
     .quote-form > .field-bathrooms {
       grid-column: span 2;
+    }
+
+    .quote-form:has(.field-frequency:not([hidden])) > .field-service,
+    .quote-form:has(.field-frequency:not([hidden])) > .field-frequency {
+      grid-column: span 3;
     }
 
     .quote-form > .footer-row {

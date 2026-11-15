@@ -55,6 +55,27 @@ export const site = {
 
 export const services = [
   {
+    id: "regular-maintenance",
+    title: "Regular Maintenance Cleaning",
+    description:
+      "Weekly, biweekly, or monthly recurring cleaning that keeps your home consistently clean.",
+    details:
+      "Regular maintenance cleaning is our recurring service for homes that need to stay consistently clean—weekly, biweekly, or monthly. Each visit covers the rooms and surfaces that collect everyday dust and use, so your home stays fresh between deeper seasonal cleans. Tell us how often you would like us to come, and we will build a schedule that fits your household.",
+    includes: [
+      "Dust surfaces, furniture, ceiling fans, and baseboards",
+      "Vacuum and mop all floors",
+      "Clean and sanitize kitchen counters, sink, stovetop, and appliance exteriors",
+      "Clean and disinfect bathrooms (toilets, tubs, showers, sinks, mirrors)",
+      "Wipe light switches, door handles, and high-touch areas",
+      "Make beds and tidy living areas",
+      "Empty trash and replace liners",
+    ],
+    frequency: "Weekly · Biweekly · Monthly",
+    image: `${base}images/kitchen-white-peonies.jpg`,
+    accent: "pink" as const,
+    category: "residential" as const,
+  },
+  {
     id: "deep-cleaning",
     title: "Deep Cleaning",
     description:
@@ -69,7 +90,7 @@ export const services = [
       "Light fixture and fan cleaning",
     ],
     image: `${base}images/kitchen-cabinets-open.jpg`,
-    accent: "pink" as const,
+    accent: "white" as const,
     category: "residential" as const,
   },
   {
@@ -87,7 +108,7 @@ export const services = [
       "Trash removal and final walkthrough presentation",
     ],
     image: `${base}images/floors-polished.jpg`,
-    accent: "white" as const,
+    accent: "pink" as const,
     category: "residential" as const,
   },
   {
@@ -105,7 +126,7 @@ export const services = [
       "Light fixture, vent, and ceiling fan dusting",
     ],
     image: `${base}images/before-after-hallway.jpg`,
-    accent: "pink" as const,
+    accent: "white" as const,
     category: "residential" as const,
   },
   {
@@ -123,7 +144,7 @@ export const services = [
       "Spot cleaning of walls, doors, and high-touch areas",
     ],
     image: `${base}images/detail-ceiling-fan-dust.jpg`,
-    accent: "white" as const,
+    accent: "pink" as const,
     category: "residential" as const,
   },
   {
@@ -141,7 +162,7 @@ export const services = [
       "Trash removal and final presentation check",
     ],
     image: `${base}images/bedroom-beach-turnover.jpg`,
-    accent: "pink" as const,
+    accent: "white" as const,
     category: "residential" as const,
   },
   {
@@ -159,7 +180,7 @@ export const services = [
       "Quick turnaround support for new bookings",
     ],
     image: `${base}images/bedroom-made.jpg`,
-    accent: "white" as const,
+    accent: "pink" as const,
     category: "residential" as const,
   },
   {
@@ -177,7 +198,7 @@ export const services = [
       "Safe and effective deep purification process",
     ],
     image: `${base}images/bathroom-modern.jpg`,
-    accent: "pink" as const,
+    accent: "white" as const,
     category: "residential" as const,
   },
   {
@@ -195,7 +216,7 @@ export const services = [
       "Faster dry time with careful furniture and floor protection",
     ],
     image: `${base}images/floors-polished.jpg`,
-    accent: "white" as const,
+    accent: "pink" as const,
     category: "residential" as const,
   },
   {
